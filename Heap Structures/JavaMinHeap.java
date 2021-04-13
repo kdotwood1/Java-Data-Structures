@@ -1,3 +1,10 @@
+/*
+As an FYI to the user, parameters named "index" or something near to that 
+refer to the index in the array relative to the Zero'th index whereas count 
+starts at 1 and as such has math applied when using it in methods
+*/
+
+
 class JavaMinHeap<Gen>
 {
 // #################################
@@ -38,25 +45,35 @@ false to stop the incoming stream of data
   }
 
 /*
+returns the value in the 1st index
+*/
+  Gen peek()
+  {
+    return minHeap[0];
+  }
+
+/*
 this method removes the head by switching
 the first and last index in the heap,
 removing the last and then reheaping
+used when the input stream is finished and 
+you can no longer replace
 */
-  Gen remove()
+  boolean remove()
   {
     if(count > 0){
       swap(0, count-1);
       count--;
       downHeap(0);
-    }
-    return (minHeap[count]);
+      return true;
+    } else { return false; }
   }
 
 /*
-this method swaps an incoming value and
-the head of the heap then sorts for heap order
+this method performs peek(), remove(), and 
+insert() in one
 */
-  Gen replace(String value)
+  Gen replace(Gen value)
   {
     Gen temp = minHeap[0];
     minHeap[0] = value;
@@ -65,22 +82,16 @@ the head of the heap then sorts for heap order
   }
 
 
-/*
-returns the value in the specified index
-*/
-  Gen peek()
-  {
-    return minHeap[0];
-  }
 
 /*
-fills the heap with a stream of inputs as
+fills an empty heap with a stream of inputs as
 opposed to one at a time
 */
   void load(Gen[] inputStream)
   {
     for(int i = 0; i < size; i++){
       minHeap[i] = inputStream[i];
+      count++;
     }
     return;
   }
@@ -93,7 +104,7 @@ left and repeats
 */
   void reheap ()
   {
-    for (int i = (count /2); i>=0; i--){
+    for (int i = (count/2); i >= 0; i--){
       upHeap(i);
     }
     return;
@@ -109,8 +120,8 @@ down and put it back in heap order
 */
   private static void downHeap(int index)
   {
-    Gen parent = minHeap[(index)];
-    Gen child1 = minHeap[(2*(index+1)-1)];
+    Gen parent = minHeap[index];
+    Gen child1 = minHeap[(2*(index+1))-1];
     Gen child2 = minHeap[(2*(index+1))];
     if (child1.compareTo(child2) < 0){
       if (parent.compareTo(child1) == 1){
@@ -154,6 +165,9 @@ A method to swap two values in the heap
     return;
   }
 
+// #################################
+// Properties
   public static int getCount() { return count; }
-  public static int getSize(){ return size;  }
+  public static int getSize() { return size;  }
+
 }
