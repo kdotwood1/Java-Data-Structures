@@ -18,7 +18,7 @@ class JavaMinHeap<Gen>
   public MyMinHeap (int maxsize){
     if (maxsize > 0){
       size = maxsize;
-      minHeap = new Gen[size];
+      minHeap = new Gen[maxsize];
       count = 0;
     }
   }
@@ -35,9 +35,9 @@ false to stop the incoming stream of data
   boolean insert(Gen value)
   {
     if (count < size) {
+      minHeap[count] = value;
+      upHeap(count);
       count++;
-      minHeap[count-1] = value;
-      upHeap(count-1);
       return true;
     } else {
       return false;
@@ -81,17 +81,17 @@ insert() in one
     return temp;
   }
 
-
-
 /*
-fills an empty heap with a stream of inputs as
+fills the remaining space of a heap with a stream of inputs as
 opposed to one at a time
 */
   void load(Gen[] inputStream)
   {
-    for(int i = 0; i < size; i++){
-      minHeap[i] = inputStream[i];
+    int i = 0;
+    while(count <= size){
+      minHeap[count] = inputStream[i];
       count++;
+      i++;
     }
     return;
   }
