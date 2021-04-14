@@ -85,15 +85,13 @@ insert() in one
 fills the remaining space of a heap with a stream of inputs as
 opposed to one at a time
 */
-  int load(Gen[] inputStream, int currentIndexOfStream)
+  boolean load(Gen value)
   {
-    int i = currentIndexOfStream;
-    while(count <= size){
-      minHeap[count] = inputStream[i];
+    if(count <= size){
+      minHeap[count] = value;
       count++;
-      i++;
-    }
-    return i;
+      return true;
+    } else { return false; }
   }
 
 /*
