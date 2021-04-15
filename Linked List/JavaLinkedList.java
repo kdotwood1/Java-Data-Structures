@@ -39,7 +39,8 @@ contains a node with a string, false otherwise */
     return;
   }
 
-/* method that counts the number of items in the list and returns them as an integer */
+/* method that counts the number of items in the 
+list and returns them as an integer */
   public int length(){
     int count = 0;                              // initialises a variable to keep count
     Node temp = head;                           // starts at the top of the list
