@@ -1,27 +1,18 @@
 class JavaLinkedList
 {
-// creates a node that takes user input as the key
+// ######################################
+// Class Variables
   private Node head;
 
-// this method will add a new node to the top of the list
+// ######################################
+// Public Methods
+/* this method will add a new node to the top of the list */
   public void add(String str){
     Node body = new Node(str);
     body.key = str;
     body.next = head;
     head = body;
     return;
-  }
-
-/* a method that returns true if the linked list 
-contains a node with a string, false otherwise */
-  public boolean has(String str){
-    Node temp = head;                           // temporary storage for the node created
-    while(temp != null){                        // while node is not empty
-      if(temp.key.equals(str)){                 //.equals() is a method to compare strings
-        return true;                            // if the string is found, return true
-      } else { temp = temp.next; }              // else traverse to the next node in the linked list
-      return false;                             // if not found return false
-    }
   }
 
 /* method that removes strings from a linked list */
@@ -38,6 +29,18 @@ contains a node with a string, false otherwise */
     }
     return;
   }
+  
+/* a method that returns true if the linked list 
+contains a node with a string, false otherwise */
+  public boolean has(String str){
+    Node temp = head;                           // temporary storage for the node created
+    while(temp != null){                        // while node is not empty
+      if(temp.key.equals(str)){                 //.equals() is a method to compare strings
+        return true;                            // if the string is found, return true
+      } else { temp = temp.next; }              // else traverse to the next node in the linked list
+      return false;                             // if not found return false
+    }
+  }
 
 /* method that counts the number of items in the 
 list and returns them as an integer */
@@ -53,11 +56,8 @@ list and returns them as an integer */
 
 /* returns true if the list is empty */
   public boolean isEmpty(){
-    if(length() == 0){
-      return true;
-    } else { return false; }
+    return (length() == 0);
   }
-
 
 /* A method that prints out each string in the list */
    public void dump(){
@@ -67,5 +67,21 @@ list and returns them as an integer */
        temp = temp.next;
      }
      return;
+   }
+}
+
+// ######################################
+// Sub-Class
+public class Node <Gen> extends JavaLinkedList {
+   // ######################################
+   // Class Variables
+   public Gen key;
+   public Node next;
+  
+   // ######################################
+   // Constructor
+   Node (Gen object){
+      key = object;
+      next = null;
    }
 }
