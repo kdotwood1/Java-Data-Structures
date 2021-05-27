@@ -81,7 +81,7 @@ public class Node <Gen> extends JavaLinkedList {
    // ######################################
    // Constructor
    Node (Gen object){
-      key = object;
+      key = new Gen(object);
       next = null;
    }
 }
