@@ -21,18 +21,6 @@ class Deque {
       return;
    }
 
-/* a method to remove the head of the queue */
-   public void dequeue(){
-      if(!isEmpty()){
-         if (count > 1){
-            Client temp = head;
-            head = head.next;
-            temp.next = null;
-         } else { head = null; tail = null; }
-         count -= 1;
-      } return;
-   }
-
 /* this method will add a new node to the top of the list */
    public void push(String str){
       Node body = new Node(str);
@@ -52,13 +40,7 @@ class Deque {
 /* a method that returns true if the queue is empty */
    public boolean isEmpty(){
       return (count == 0);
-   }
-
-/* a method that returns the length of the queue */
-   public int length(){
-      return count;
-   }
-}  
+   }  
 
 /* a method that returns the front element of the queue */
    public int peek(){
