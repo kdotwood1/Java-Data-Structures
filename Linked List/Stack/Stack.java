@@ -26,7 +26,7 @@ class Stack
    public int peek(){
       if (!isEmpty()){ return head; }
    }
-
+\
 /* returns true if the list is empty */
   public boolean isEmpty(){
     return (length() == 0);
