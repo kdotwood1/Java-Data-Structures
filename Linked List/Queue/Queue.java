@@ -26,7 +26,7 @@ class Queue {
    public void dequeue(){
       if(!isEmpty()){
          if (count > 1){
-            Client temp = head;
+            Node temp = head;
             head = head.next;
             temp.next = null;
          } else { head = null; tail = null; }
